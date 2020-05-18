@@ -25,4 +25,12 @@ public interface CarDao {
 
     @Insert("insert into carMessage(carName,carType,price,carSeries) values(#{carName},#{carType},#{price},#{carSeries})")
     void insertCar(Car car);
+
+    @Select("select * from carMessage where carName = #{carName} and carSeries = #{carSeries}")
+    Car selectByCarNameAndCarSeries(@Param("carName") String carName, @Param("carSeries") String carSeries);
+
+
+    @Select("select * from carMessage where carName like concat('%',#{carName},'%') limit #{page},#{size}")
+    List<Car> findCarInfoByWhere(@Param("carName") String carName, @Param("page") Integer page, @Param("size") Integer size);
+
 }

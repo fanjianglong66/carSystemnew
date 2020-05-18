@@ -18,4 +18,9 @@ public interface CarService {
     void updateById(Car car);
 
     void insertCar(Car car);
+
+    //查询客户要购买车型的库存余量；
+    Car selectByCarNameAndCarSeries(String carName, String carSeries);
+
+    List<Car> findCarInfoByWhere(String carName, Integer page, Integer size);
 }
